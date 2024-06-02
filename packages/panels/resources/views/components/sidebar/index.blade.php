@@ -129,7 +129,7 @@
             @endforeach
         </ul>
 
-        <script>
+        <script {{ \Filament\Support\get_csp_nonce() }}>
             var collapsedGroups = JSON.parse(
                 localStorage.getItem('collapsedGroups'),
             )

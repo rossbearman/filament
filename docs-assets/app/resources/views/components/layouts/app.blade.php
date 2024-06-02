@@ -9,14 +9,14 @@
 
         <title>{{ config('app.name') }}</title>
 
-        <style>[x-cloak] { display: none !important; }</style>
+        <style {{ \Filament\Support\get_csp_nonce() }}>[x-cloak] { display: none !important; }</style>
         @filamentStyles
         @vite('resources/css/app.css')
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700&amp;display=swap" rel="stylesheet">
 
-        <script>
+        <script {{ \Filament\Support\get_csp_nonce() }}>
             if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 document.documentElement.classList.add('dark')
             }

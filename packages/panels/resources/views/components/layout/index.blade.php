@@ -95,7 +95,7 @@
                 class="fi-main-sidebar"
             />
 
-            <script>
+            <script {{ \Filament\Support\get_csp_nonce() }}>
                 document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         let activeSidebarItem = document.querySelector(

@@ -5,7 +5,7 @@
 @if ($this->hasUnsavedDataChangesAlert())
     @if (FilamentView::hasSpaMode())
         @script
-            <script>
+            <script {{ \Filament\Support\get_csp_nonce() }}>
                 let formSubmitted = false
 
                 document.addEventListener(
@@ -56,7 +56,7 @@
         @endscript
     @else
         @script
-            <script>
+            <script {{ \Filament\Support\get_csp_nonce() }}>
                 window.addEventListener('beforeunload', (event) => {
                     if (
                         window.jsMd5(

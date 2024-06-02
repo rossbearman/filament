@@ -2,6 +2,7 @@
 
 namespace Filament\Support\Assets;
 
+use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\HtmlString;
@@ -100,6 +101,7 @@ class Js extends Asset
         $async = $this->isAsync() ? 'async' : '';
         $defer = $this->isDeferred() ? 'defer' : '';
         $module = $this->isModule() ? 'type="module"' : '';
+        $cspNonce = (string) FilamentAsset::getCspNonceAttribute();
 
         $hasSpaMode = FilamentView::hasSpaMode();
 
@@ -114,6 +116,7 @@ class Js extends Asset
                 {$module}
                 {$navigateOnce}
                 {$navigateTrack}
+                {$cspNonce}
             ></script>
         ");
     }

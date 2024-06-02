@@ -2,6 +2,7 @@
 
 namespace Filament\Support;
 
+use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentColor;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Contracts\Support\Htmlable;
@@ -44,6 +45,13 @@ if (! function_exists('Filament\Support\get_model_label')) {
         return (string) str(class_basename($model))
             ->kebab()
             ->replace('-', ' ');
+    }
+}
+
+if (! function_exists('Filament\Support\get_csp_nonce')) {
+    function get_csp_nonce(): ?HtmlString
+    {
+        return FilamentAsset::getCspNonceAttribute();
     }
 }
 

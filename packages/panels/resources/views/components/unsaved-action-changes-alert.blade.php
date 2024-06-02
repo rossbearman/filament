@@ -1,6 +1,6 @@
 @if (filament()->hasUnsavedChangesAlerts())
     @script
-        <script>
+        <script {{ \Filament\Support\get_csp_nonce() }}>
             window.addEventListener('beforeunload', (event) => {
                 if (typeof @this === 'undefined') {
                     return

@@ -5,6 +5,7 @@ namespace Filament\Support\Assets;
 use Exception;
 use Filament\Support\Facades\FilamentColor;
 use Illuminate\Support\Arr;
+use Illuminate\Support\HtmlString;
 
 class AssetManager
 {
@@ -37,6 +38,8 @@ class AssetManager
      * @var array<string, Theme>
      */
     protected array $themes = [];
+
+    protected ?string $cspNonce = null;
 
     /**
      * @param  array<Asset>  $assets
@@ -76,6 +79,21 @@ class AssetManager
             ...($this->scriptData[$package] ?? []),
             ...$data,
         ];
+    }
+
+    public function registerCspNonce(?string $nonce): void
+    {
+        $this->cspNonce = $nonce;
+    }
+
+    public function getCspNonce(): ?string
+    {
+        return $this->cspNonce;
+    }
+
+    public function getCspNonceAttribute(): ?HtmlString
+    {
+        return $this->cspNonce ? new HtmlString("nonce=\"{$this->cspNonce}\"") : null;
     }
 
     /**
