@@ -542,8 +542,9 @@
 
                                 <div
                                     @class([
-                                        'flex items-center' => ! $contentGrid,
-                                        'flex h-full items-stretch' => $contentGrid,
+                                        'flex',
+                                        'items-center' => ! $contentGrid,
+                                        'h-full items-stretch' => $contentGrid,
                                         'ps-1 sm:ps-3' => (! $contentGrid) && $hasItemBeforeRecordContent,
                                         'pe-1 sm:pe-3' => (! $contentGrid) && $hasItemAfterRecordContent,
                                         'ps-1' => $contentGrid && $hasItemBeforeRecordContent,
